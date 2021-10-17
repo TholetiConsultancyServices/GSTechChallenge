@@ -13,8 +13,8 @@ struct TransactionListView: View {
     var body: some View {
 
         VStack {
-            CategoryGridView(viewItems: viewModel.categoryViewItems) { item in
-                self.viewModel.setSelectedCategory(item: item)
+            CategoryGridView(viewItems: viewModel.categoryViewItems) { category in
+                self.viewModel.setSelectedCategory(category)
             }
             List {
                 ForEach(viewModel.transactionViewItems) { viewItem in

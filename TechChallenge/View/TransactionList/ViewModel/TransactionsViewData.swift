@@ -7,10 +7,54 @@
 
 import SwiftUI
 
-struct CategoryViewItem : Hashable {
-    let text: String
-    let color: Color
-    let category: TransactionModel.Category?
+enum TransactionViewCategory: String, CaseIterable {
+    case food
+    case health
+    case entertainment
+    case shopping
+    case travel
+    case all
+
+    init(_ category: TransactionModel.Category?) {
+        switch category {
+        case .none:
+            self = .all
+        case .some(let value):
+            switch value {
+            case .food:
+                self = .food
+            case .travel:
+                self = .travel
+            case .shopping:
+                self = .shopping
+            case .entertainment:
+                self = .entertainment
+            case .health:
+                self = .health
+            }
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .food:
+            return TransactionModel.Category.food.color
+        case .travel:
+            return TransactionModel.Category.travel.color
+        case .shopping:
+            return TransactionModel.Category.shopping.color
+        case .entertainment:
+            return TransactionModel.Category.entertainment.color
+        case .health:
+            return TransactionModel.Category.health.color
+        case .all:
+            return .black
+        }
+    }
+
+    var text: String {
+        rawValue
+    }
 }
 
 struct TransactionViewItem: Identifiable {

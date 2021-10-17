@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CategoryGridView: View {
 
-    let viewItems: [CategoryViewItem]
-    var selectedCategroyBlock: (CategoryViewItem) -> Void
+    let viewItems: [TransactionViewCategory]
+    var selectedCategroyBlock: (TransactionViewCategory) -> Void
 
     private let rows = [ GridItem(.adaptive(minimum: 50))]
     // @Binding var selectedCategory: CategoryViewItem
@@ -48,11 +48,7 @@ struct CategoryGridView: View {
 struct CategoryGridView_Previews: PreviewProvider {
 
     static var previews: some View {
-
-        let food = CategoryViewItem(text: "food", color: .green, category: .food)
-        let travel = CategoryViewItem(text: "travel", color: .blue, category: .travel)
-
-        CategoryGridView(viewItems: [food, travel], selectedCategroyBlock: { _ in })
+        CategoryGridView(viewItems: [TransactionViewCategory.food, TransactionViewCategory.travel], selectedCategroyBlock: { _ in })
     }
 }
 

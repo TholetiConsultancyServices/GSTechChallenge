@@ -12,23 +12,14 @@ final class TransactionsViewModel: ObservableObject {
 
     var repository: TransactionsRepositoryType
 
-    static private var defaultCategoryViewItem: CategoryViewItem {
-        CategoryViewItem(text: "all", color: .black, category: nil)
-    }
-
     private var sum: Double = 0.0
     private var subscriptions = Set<AnyCancellable>()
 
     @Published private(set) var transactionViewItems: [TransactionViewItem] = []
-    private(set) var selectedCategory: CategoryViewItem = defaultCategoryViewItem
+    private(set) var selectedCategory: TransactionViewCategory = .all
 
-    var categoryViewItems: [CategoryViewItem] {
-        var items = TransactionModel.Category.allCases.map { CategoryViewItem(text: $0.rawValue,
-                                                              color: $0.color,
-                                                              category: $0) }
-
-        items.insert(Self.defaultCategoryViewItem, at: 0)
-        return items
+    var categoryViewItems: [TransactionViewCategory] {
+      TransactionViewCategory.allCases
     }
 
     var totalSumViewItem: TotalSumViewItem {
@@ -44,8 +35,8 @@ final class TransactionsViewModel: ObservableObject {
         repository.updateTransactionState(transactionID: viewItem.id, isPinned: isPinned)
     }
 
-    func setSelectedCategory(item: CategoryViewItem) {
-        updateViewData(transactions: repository.transactions, selectedCategory: item)
+    func setSelectedCategory(_ category: TransactionViewCategory) {
+        updateViewData(transactions: repository.transactions, selectedCategory: category)
     }
 
     private func setupSubscriptions() {
@@ -58,8 +49,8 @@ final class TransactionsViewModel: ObservableObject {
             .store(in: &subscriptions)
     }
 
-    private func updateViewData(transactions: [TransactionInfo], selectedCategory: CategoryViewItem) {
-        let updatedTransactions = selectedCategory.category == nil ? transactions : transactions.filter { $0.transaction.category == selectedCategory.category }
+    private func updateViewData(transactions: [TransactionInfo], selectedCategory: TransactionViewCategory) {
+        let updatedTransactions = (selectedCategory == .all) ? transactions : transactions.filter { TransactionViewCategory($0.transaction.category) == selectedCategory }
         sum = updatedTransactions.filter({ $0.isPinned == false }).reduce(0) { $0 + $1.transaction.amount }
         transactionViewItems = updatedTransactions.map { TransactionViewItem($0) }
     }
