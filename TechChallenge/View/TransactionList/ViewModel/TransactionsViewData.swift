@@ -85,6 +85,7 @@ struct TransactionViewItem: Identifiable {
 
 struct TotalSumViewItem {
     let category: String
+    let categoryColor: Color
     let sum: String
 }
 

@@ -12,8 +12,7 @@ struct CategoryGridView: View {
     let viewItems: [TransactionViewCategory]
     var selectedCategroyBlock: (TransactionViewCategory) -> Void
 
-    private let rows = [ GridItem(.adaptive(minimum: 50))]
-    // @Binding var selectedCategory: CategoryViewItem
+    private let rows = [GridItem(.adaptive(minimum: 50))]
 
     var body: some View {
             ScrollView(.horizontal) {

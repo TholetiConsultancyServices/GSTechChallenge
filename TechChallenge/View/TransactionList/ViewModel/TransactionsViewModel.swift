@@ -23,7 +23,9 @@ final class TransactionsViewModel: ObservableObject {
     }
 
     var totalSumViewItem: TotalSumViewItem {
-        TotalSumViewItem(category: selectedCategory.text, sum: sum.moneyFormatted())
+        TotalSumViewItem(category: selectedCategory.text,
+                         categoryColor: selectedCategory.color,
+                         sum: sum.moneyFormatted())
     }
 
     init(repository: TransactionsRepositoryType) {

@@ -17,12 +17,20 @@ struct TotalSumView: View {
                 HStack {
                     Spacer()
                     Text(viewItem.category)
+                        .foregroundColor(viewItem.categoryColor)
+                        .font(.headline)
+                        .fontWeight(.bold)
                 }
 
+                Spacer()
+                
                 HStack {
                     Text("Total spent")
+                        .secondary()
                     Spacer()
                     Text(viewItem.sum)
+                        .fontWeight(.bold)
+                        .secondary()
                 }
             }
             .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
@@ -38,7 +46,7 @@ struct TotalSumView: View {
 #if DEBUG
 struct TotalSumView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalSumView(viewItem: TotalSumViewItem(category: "all", sum: "$ 15.50"))
+        TotalSumView(viewItem: TotalSumViewItem(category: "all", categoryColor: .blue, sum: "$ 15.50"))
     }
 }
 #endif
