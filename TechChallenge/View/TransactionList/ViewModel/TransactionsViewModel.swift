@@ -36,6 +36,7 @@ final class TransactionsViewModel: ObservableObject {
     }
 
     func setSelectedCategory(_ category: TransactionViewCategory) {
+        selectedCategory = category
         updateViewData(transactions: repository.transactions, selectedCategory: category)
     }
 

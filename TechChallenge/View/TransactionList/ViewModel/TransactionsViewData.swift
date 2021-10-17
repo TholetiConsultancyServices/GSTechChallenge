@@ -8,12 +8,12 @@
 import SwiftUI
 
 enum TransactionViewCategory: String, CaseIterable {
+    case all
     case food
     case health
     case entertainment
     case shopping
     case travel
-    case all
 
     init(_ category: TransactionModel.Category?) {
         switch category {
