@@ -15,23 +15,18 @@ enum TransactionViewCategory: String, CaseIterable {
     case shopping
     case travel
 
-    init(_ category: TransactionModel.Category?) {
+    init(_ category: TransactionModel.Category) {
         switch category {
-        case .none:
-            self = .all
-        case .some(let value):
-            switch value {
-            case .food:
-                self = .food
-            case .travel:
-                self = .travel
-            case .shopping:
-                self = .shopping
-            case .entertainment:
-                self = .entertainment
-            case .health:
-                self = .health
-            }
+        case .food:
+            self = .food
+        case .travel:
+            self = .travel
+        case .shopping:
+            self = .shopping
+        case .entertainment:
+            self = .entertainment
+        case .health:
+            self = .health
         }
     }
 
@@ -74,7 +69,7 @@ struct TransactionViewItem: Identifiable {
         self.name = transactionInfo.transaction.name
         self.accountName = transactionInfo.transaction.accountName
         self.image = transactionInfo.transaction.image
-        self.amount = "\(transactionInfo.transaction.amount.formatted())"
+        self.amount = transactionInfo.transaction.amount.formatted()
         self.date = transactionInfo.transaction.date.formatted
         self.categoryName = transactionInfo.transaction.category.rawValue
         self.categoryColor = transactionInfo.transaction.category.color

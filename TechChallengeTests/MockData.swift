@@ -14,19 +14,20 @@ extension TransactionInfo {
 
     static func mockData(id: Int = Int.random(in: 1...100),
         category: TransactionModel.Category = .food,
-                         date: String = "2021-04-19",
-                         amount: Double = 10.00) -> TransactionInfo {
+                         date: Date = Date(),
+                         amount: Double = 10.00,
+                         isPinned: Bool = false) -> TransactionInfo {
          let transaction = TransactionModel(
             id: id,
             name: "Outbound Trip",
             category: category,
             amount: amount,
-            date: Date(string: date)!,
+            date: date,
             accountName: accountName,
             provider: .americanAirlines
         )
 
-        return TransactionInfo(transaction)
+        return TransactionInfo(transaction, isPinned: isPinned)
     }
 }
 
@@ -36,7 +37,7 @@ extension TransactionModel {
 
     static func mockData(id: Int = Int.random(in: 1...100),
                          category: TransactionModel.Category = .food,
-                         date: String = "2021-04-19",
+                         date: Date = Date(),
                          amount: Double = 10.00) -> TransactionModel {
 
         let transaction = TransactionModel(
@@ -44,7 +45,7 @@ extension TransactionModel {
             name: "Outbound Trip",
             category: category,
             amount: amount,
-            date: Date(string: date)!,
+            date: date,
             accountName: accountName,
             provider: .americanAirlines
         )

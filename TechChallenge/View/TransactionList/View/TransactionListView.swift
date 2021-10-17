@@ -13,14 +13,14 @@ struct TransactionListView: View {
     var body: some View {
 
         VStack {
-            CategoryGridView(viewItems: viewModel.categoryViewItems) { category in
-                self.viewModel.setSelectedCategory(category)
+            CategoryGridView(viewItems: viewModel.categoryViewItems) {
+                self.viewModel.setSelectedCategory($0)
             }
 
             List {
                 ForEach(viewModel.transactionViewItems) { viewItem in
-                    TransactionView(viewItem) { isPinned in
-                        self.viewModel.setPinState(viewItem: viewItem, isPinned: isPinned)
+                    TransactionView(viewItem) {
+                        self.viewModel.setPinState(viewItem: viewItem, isPinned: $0)
                     }
                 }
             }

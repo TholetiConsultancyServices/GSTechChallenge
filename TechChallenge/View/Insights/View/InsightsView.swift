@@ -20,7 +20,9 @@ struct InsightsView: View {
                     Text(viewItem.name)
                         .font(.headline)
                         .foregroundColor(viewItem.color)
+
                     Spacer()
+                    
                     Text(viewItem.sum)
                         .bold()
                         .secondary()

@@ -10,23 +10,22 @@ import SwiftUI
 
 final class TransactionsViewModel: ObservableObject {
 
-    var repository: TransactionsRepositoryType
-
-    private var sum: Double = 0.0
-    private var subscriptions = Set<AnyCancellable>()
-
     @Published private(set) var transactionViewItems: [TransactionViewItem] = []
     private(set) var selectedCategory: TransactionViewCategory = .all
 
-    var categoryViewItems: [TransactionViewCategory] {
+    lazy var categoryViewItems: [TransactionViewCategory] = {
       TransactionViewCategory.allCases
-    }
+    }()
 
     var totalSumViewItem: TotalSumViewItem {
         TotalSumViewItem(category: selectedCategory.text,
                          categoryColor: selectedCategory.color,
                          sum: sum.moneyFormatted())
     }
+
+    private var sum: Double = 0.0
+    private var subscriptions = Set<AnyCancellable>()
+    private let repository: TransactionsRepositoryType
 
     init(repository: TransactionsRepositoryType) {
         self.repository = repository
@@ -45,9 +44,11 @@ final class TransactionsViewModel: ObservableObject {
         selectedCategory = category
         updateViewData(transactions: repository.transactions, selectedCategory: category)
     }
+}
 
-    private func setupSubscriptions() {
+private extension TransactionsViewModel {
     
+    private func setupSubscriptions() {
         repository.transactionsPublisher
             .sink { [weak self] in
                 guard let self = self else { return }

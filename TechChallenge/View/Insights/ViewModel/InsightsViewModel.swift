@@ -10,16 +10,19 @@ import SwiftUI
 
 final class InsightsViewModel: ObservableObject {
 
-    var repository: TransactionsRepositoryType
-    private var subscriptions = Set<AnyCancellable>()
-
     @Published var categorySumViewItems: [CategorySumViewItem] = []
     @Published var chartViewItems: [ChartViewItem] = []
+
+    private let repository: TransactionsRepositoryType
+    private var subscriptions = Set<AnyCancellable>()
 
     init(repository: TransactionsRepositoryType) {
         self.repository = repository
         setupSubscriptions()
     }
+}
+
+private extension InsightsViewModel {
 
     private func setupSubscriptions() {
         repository.transactionsPublisher

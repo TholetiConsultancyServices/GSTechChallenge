@@ -10,8 +10,8 @@ import SwiftUI
 struct TransactionView: View {
     let viewItem: TransactionViewItem
     let pinStateBlock: (Bool) -> Void
-    @State private var isPinned: Bool = false
 
+    @State private var isPinned: Bool = false
 
     init(_ item: TransactionViewItem, pinStateBlock: @escaping (Bool) -> Void) {
         self.viewItem = item
@@ -25,6 +25,7 @@ struct TransactionView: View {
                 Text(viewItem.categoryName)
                     .font(.headline)
                     .foregroundColor(viewItem.categoryColor)
+
                 Spacer()
 
                 Button(action: {
@@ -36,33 +37,34 @@ struct TransactionView: View {
             }
 
             if !isPinned {
+                HStack {
+                    viewItem.image
+                        .resizable()
+                        .frame(
+                            width: 60.0,
+                            height: 60.0,
+                            alignment: .top
+                        )
 
-            HStack {
-                viewItem.image
-                    .resizable()
-                    .frame(
-                        width: 60.0,
-                        height: 60.0,
-                        alignment: .top
-                    )
+                    VStack(alignment: .leading) {
+                        Text(viewItem.name)
+                            .secondary()
 
-                VStack(alignment: .leading) {
-                    Text(viewItem.name)
-                        .secondary()
-                    Text(viewItem.accountName)
-                        .tertiary()
+                        Text(viewItem.accountName)
+                            .tertiary()
+                    }
+
+                    Spacer()
+
+                    VStack(alignment: .trailing) {
+                        Text(viewItem.amount)
+                            .bold()
+                            .secondary()
+
+                        Text(viewItem.date)
+                            .tertiary()
+                    }
                 }
-
-                Spacer()
-
-                VStack(alignment: .trailing) {
-                    Text(viewItem.amount)
-                        .bold()
-                        .secondary()
-                    Text(viewItem.date)
-                        .tertiary()
-                }
-            }
             }
         }
         .padding(8.0)

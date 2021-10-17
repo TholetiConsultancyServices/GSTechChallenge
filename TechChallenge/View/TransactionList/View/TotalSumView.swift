@@ -16,6 +16,7 @@ struct TotalSumView: View {
             VStack {
                 HStack {
                     Spacer()
+
                     Text(viewItem.category)
                         .foregroundColor(viewItem.categoryColor)
                         .font(.headline)
@@ -27,7 +28,9 @@ struct TotalSumView: View {
                 HStack {
                     Text("Total spent")
                         .secondary()
+
                     Spacer()
+
                     Text(viewItem.sum)
                         .fontWeight(.bold)
                         .secondary()

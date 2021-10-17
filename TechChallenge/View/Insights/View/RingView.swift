@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-fileprivate typealias Category = TransactionModel.Category
-
 struct RingView: View {
     let viewItems: [ChartViewItem]
 

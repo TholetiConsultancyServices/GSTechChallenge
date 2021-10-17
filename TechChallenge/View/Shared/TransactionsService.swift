@@ -11,7 +11,6 @@ protocol TransactionsServiceType {
     func fetchTransactions(completion: (Result<[TransactionModel], Error>) -> Void)
 }
 
-
 struct TransactionsService: TransactionsServiceType {
     func fetchTransactions(completion: (Result<[TransactionModel], Error>) -> Void) {
         completion(.success(ModelData.sampleTransactions))
