@@ -33,6 +33,10 @@ final class TransactionsViewModel: ObservableObject {
         setupSubscriptions()
     }
 
+    func loadTransactions() {
+        repository.fetchTransactions()
+    }
+
     func setPinState(viewItem: TransactionViewItem, isPinned: Bool)  {
         repository.updateTransactionState(transactionID: viewItem.id, isPinned: isPinned)
     }
@@ -54,6 +58,7 @@ final class TransactionsViewModel: ObservableObject {
 
     private func updateViewData(transactions: [TransactionInfo], selectedCategory: TransactionViewCategory) {
         let updatedTransactions = (selectedCategory == .all) ? transactions : transactions.filter { TransactionViewCategory($0.transaction.category) == selectedCategory }
+
         sum = updatedTransactions.filter({ $0.isPinned == false }).reduce(0) { $0 + $1.transaction.amount }
         transactionViewItems = updatedTransactions.map { TransactionViewItem($0) }
     }

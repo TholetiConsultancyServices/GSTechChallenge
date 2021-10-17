@@ -39,6 +39,7 @@
 		DEF02834271C7F1500AC06E5 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF02833271C7F1500AC06E5 /* MockData.swift */; };
 		DEF0283A271C86F000AC06E5 /* TransactionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF02839271C86F000AC06E5 /* TransactionsService.swift */; };
 		DEF0283E271C88DA00AC06E5 /* MockTransactionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF0283D271C88DA00AC06E5 /* MockTransactionsService.swift */; };
+		DEF0284C271CCEF800AC06E5 /* TransactionsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF0284B271CCEF800AC06E5 /* TransactionsRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		DEF02833271C7F1500AC06E5 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		DEF02839271C86F000AC06E5 /* TransactionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsService.swift; sourceTree = "<group>"; };
 		DEF0283D271C88DA00AC06E5 /* MockTransactionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTransactionsService.swift; sourceTree = "<group>"; };
+		DEF0284B271CCEF800AC06E5 /* TransactionsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				DEF02812271C6A6F00AC06E5 /* MockTransactionsRepository.swift */,
 				DEF02833271C7F1500AC06E5 /* MockData.swift */,
 				DEF0283D271C88DA00AC06E5 /* MockTransactionsService.swift */,
+				DEF0284B271CCEF800AC06E5 /* TransactionsRepositoryTests.swift */,
 			);
 			path = TechChallengeTests;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEF0284C271CCEF800AC06E5 /* TransactionsRepositoryTests.swift in Sources */,
 				DEF0283E271C88DA00AC06E5 /* MockTransactionsService.swift in Sources */,
 				DEF02834271C7F1500AC06E5 /* MockData.swift in Sources */,
 				DEF02813271C6A6F00AC06E5 /* MockTransactionsRepository.swift in Sources */,

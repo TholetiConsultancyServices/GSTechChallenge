@@ -27,6 +27,7 @@ struct TransactionInfo: Identifiable {
 }
 
 protocol TransactionsRepositoryType {
+    func fetchTransactions()
     func updateTransactionState(transactionID: Int, isPinned: Bool)
 
     var transactions: [TransactionInfo] { get }
@@ -35,14 +36,13 @@ protocol TransactionsRepositoryType {
 
 final class TransactionsRepository: TransactionsRepositoryType, ObservableObject {
 
-    @Published private(set) var transactions: [TransactionInfo]
+    @Published private(set) var transactions: [TransactionInfo] = []
     var transactionsPublisher: Published<[TransactionInfo]>.Publisher { $transactions }
 
     private let transactionsService: TransactionsServiceType
 
     init(transactionsService: TransactionsServiceType) {
         self.transactionsService = transactionsService
-        transactions = ModelData.sampleTransactions.map{ TransactionInfo($0, isPinned: false) }
     }
 
     func updateTransactionState(transactionID: Int, isPinned: Bool) {
@@ -52,7 +52,7 @@ final class TransactionsRepository: TransactionsRepositoryType, ObservableObject
         transactions[index] = updatedTransaction
     }
 
-    private func fetchTransactions() {
+    func fetchTransactions() {
         transactionsService.fetchTransactions { result in
             switch result {
             case .success(let transactionModels):

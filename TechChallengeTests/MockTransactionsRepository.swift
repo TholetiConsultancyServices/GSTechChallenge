@@ -9,13 +9,18 @@ import SwiftUI
 @testable import TechChallenge
 
 final class MockTransactionsRepository: TransactionsRepositoryType, ObservableObject {
-    var updateTransactionStateCallCount: Int = 0
+    var updateTransactionStateCallCount = 0
     var updateTransactionStateReceivedArguments: [(transactionID: Int, isPinned: Bool)] = []
+    var fetchTransactionsCallCount = 0
 
     var transactionsReturnValue:  [TransactionInfo] = [] {
         willSet {
             transactions = newValue
         }
+    }
+
+    func fetchTransactions() {
+        fetchTransactionsCallCount += 1
     }
 
     func updateTransactionState(transactionID: Int, isPinned: Bool) {
@@ -24,7 +29,7 @@ final class MockTransactionsRepository: TransactionsRepositoryType, ObservableOb
     }
 
     @Published private(set) var transactions: [TransactionInfo] = []
-    
+
     var transactionsPublisher: Published<[TransactionInfo]>.Publisher { $transactions }
 
 }

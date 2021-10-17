@@ -9,14 +9,17 @@ import Foundation
 
 @testable import TechChallenge
 
-struct MockTransactionInfoData {
+extension TransactionInfo {
     private static let accountName = "Online Savings"
 
-    static func transaction(with date: String, amount: Double) -> TransactionInfo {
+    static func mockData(id: Int = Int.random(in: 1...100),
+        category: TransactionModel.Category = .food,
+                         date: String = "2021-04-19",
+                         amount: Double = 10.00) -> TransactionInfo {
          let transaction = TransactionModel(
-            id: 13,
+            id: id,
             name: "Outbound Trip",
-            category: .travel,
+            category: category,
             amount: amount,
             date: Date(string: date)!,
             accountName: accountName,
@@ -26,4 +29,28 @@ struct MockTransactionInfoData {
         return TransactionInfo(transaction)
     }
 }
+
+
+extension TransactionModel {
+    private static let accountName = "Online Savings"
+
+    static func mockData(id: Int = Int.random(in: 1...100),
+                         category: TransactionModel.Category = .food,
+                         date: String = "2021-04-19",
+                         amount: Double = 10.00) -> TransactionModel {
+
+        let transaction = TransactionModel(
+            id: id,
+            name: "Outbound Trip",
+            category: category,
+            amount: amount,
+            date: Date(string: date)!,
+            accountName: accountName,
+            provider: .americanAirlines
+        )
+
+        return transaction
+    }
+}
+
 
