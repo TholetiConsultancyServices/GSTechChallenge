@@ -43,8 +43,8 @@ final class TransactionsViewModel: ObservableObject {
     }
 
     private func setupSubscriptions() {
+    
         repository.transactionsPublisher
-            .receive(on: RunLoop.main)
             .sink { [weak self] in
                 guard let self = self else { return }
                 self.updateViewData(transactions: $0, selectedCategory: self.selectedCategory)

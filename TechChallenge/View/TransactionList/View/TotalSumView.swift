@@ -12,7 +12,7 @@ struct TotalSumView: View {
     let viewItem: TotalSumViewItem
 
     var body: some View {
-        ZStack {
+        HStack {
             VStack {
                 HStack {
                     Spacer()
@@ -23,7 +23,7 @@ struct TotalSumView: View {
                 }
 
                 Spacer()
-                
+
                 HStack {
                     Text("Total spent")
                         .secondary()
@@ -37,7 +37,7 @@ struct TotalSumView: View {
         }
         .frame(height: 70)
         .border(Color.accentColor, width: 2)
-        .clipShape(RoundedRectangle(cornerRadius: 8.0))
+        .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
     }
 }

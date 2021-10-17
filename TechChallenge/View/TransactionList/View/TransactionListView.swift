@@ -16,6 +16,7 @@ struct TransactionListView: View {
             CategoryGridView(viewItems: viewModel.categoryViewItems) { category in
                 self.viewModel.setSelectedCategory(category)
             }
+
             List {
                 ForEach(viewModel.transactionViewItems) { viewItem in
                     TransactionView(viewItem) { isPinned in
@@ -26,9 +27,11 @@ struct TransactionListView: View {
             .animation(.easeIn)
             .listStyle(PlainListStyle())
             .buttonStyle(PlainButtonStyle())
+
             HStack {
                 TotalSumView(viewItem: viewModel.totalSumViewItem)
             }
+
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Transactions")
         }

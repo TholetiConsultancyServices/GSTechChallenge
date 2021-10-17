@@ -11,6 +11,7 @@ import SwiftUI
 final class MockTransactionsRepository: TransactionsRepositoryType, ObservableObject {
     var updateTransactionStateCallCount: Int = 0
     var updateTransactionStateReceivedArguments: [(transactionID: Int, isPinned: Bool)] = []
+
     var transactionsReturnValue:  [TransactionInfo] = [] {
         willSet {
             transactions = newValue
@@ -22,7 +23,8 @@ final class MockTransactionsRepository: TransactionsRepositoryType, ObservableOb
         updateTransactionStateReceivedArguments.append((transactionID: transactionID, isPinned: isPinned))
     }
 
-    @Published private(set) var transactions: [TransactionInfo] = [] 
+    @Published private(set) var transactions: [TransactionInfo] = []
+    
     var transactionsPublisher: Published<[TransactionInfo]>.Publisher { $transactions }
 
 }
