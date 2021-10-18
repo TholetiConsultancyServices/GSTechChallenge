@@ -72,11 +72,10 @@ extension RingView {
 
         var body: some View {
             GeometryReader { geometry in
-                if ratio != 0 {
-                    Text(text)
-                        .percentage()
-                        .position(position(for: geometry))
-                }
+                Text(text)
+                    .percentage()
+                    .position(position(for: geometry))
+
             }
         }
     }

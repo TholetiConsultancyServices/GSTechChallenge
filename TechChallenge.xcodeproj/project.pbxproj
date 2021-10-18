@@ -19,6 +19,7 @@
 		3CE226BB26B0573C00B3D085 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE226BA26B0573C00B3D085 /* Date.swift */; };
 		3CE226BF26B05EB100B3D085 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE226BE26B05EB100B3D085 /* ViewModifiers.swift */; };
 		3CE226C126B062BA00B3D085 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE226C026B062BA00B3D085 /* Double.swift */; };
+		DE31567B271DE76100F9E77B /* InsightsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE31567A271DE76100F9E77B /* InsightsViewModelTests.swift */; };
 		DEF02791271C531200AC06E5 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF02790271C531200AC06E5 /* DependencyProvider.swift */; };
 		DEF027A5271C549B00AC06E5 /* TransactionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF027A4271C549B00AC06E5 /* TransactionsRepository.swift */; };
 		DEF027C0271C57E600AC06E5 /* TransactionsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF027BF271C57E600AC06E5 /* TransactionsViewModelTests.swift */; };
@@ -69,6 +70,7 @@
 		3CE226BA26B0573C00B3D085 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3CE226BE26B05EB100B3D085 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		3CE226C026B062BA00B3D085 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		DE31567A271DE76100F9E77B /* InsightsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsViewModelTests.swift; sourceTree = "<group>"; };
 		DEF02790271C531200AC06E5 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		DEF027A4271C549B00AC06E5 /* TransactionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsRepository.swift; sourceTree = "<group>"; };
 		DEF027BF271C57E600AC06E5 /* TransactionsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModelTests.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				3C296EDD26B4402A006DF667 /* Info.plist */,
 				DEF027BF271C57E600AC06E5 /* TransactionsViewModelTests.swift */,
+				DE31567A271DE76100F9E77B /* InsightsViewModelTests.swift */,
 				DEF02812271C6A6F00AC06E5 /* MockTransactionsRepository.swift */,
 				DEF02833271C7F1500AC06E5 /* MockData.swift */,
 				DEF0283D271C88DA00AC06E5 /* MockTransactionsService.swift */,
@@ -395,6 +398,7 @@
 				DEF02834271C7F1500AC06E5 /* MockData.swift in Sources */,
 				DEF02813271C6A6F00AC06E5 /* MockTransactionsRepository.swift in Sources */,
 				DEF027C0271C57E600AC06E5 /* TransactionsViewModelTests.swift in Sources */,
+				DE31567B271DE76100F9E77B /* InsightsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

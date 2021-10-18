@@ -26,19 +26,18 @@ private extension InsightsViewModel {
 
     private func setupSubscriptions() {
         repository.transactionsPublisher
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
+            .sink { [weak self] in
                 guard let self = self else { return }
 
-                self.updateCategarySumViewItems()
-                self.updateChartViewItems()
+                self.updateCategarySumViewItems(transactions: $0)
+                self.updateChartViewItems(transactions: $0)
             }
             .store(in: &subscriptions)
     }
 
-    private func updateCategarySumViewItems() {
+    private func updateCategarySumViewItems(transactions: [TransactionInfo]) {
         categorySumViewItems = TransactionModel.Category.allCases.map { category -> CategorySumViewItem in
-            let sum = repository.transactions.filter({ $0.transaction.category == category && $0.isPinned == false })
+            let sum = transactions.filter({ $0.transaction.category == category && $0.isPinned == false })
                 .reduce(0) { $0 + $1.transaction.amount }
 
             return CategorySumViewItem(name: category.rawValue,
@@ -47,25 +46,29 @@ private extension InsightsViewModel {
         }
     }
 
-    private func updateChartViewItems() {
-        let totalSum = repository.transactions.filter( { $0.isPinned == false })
+    private func updateChartViewItems(transactions: [TransactionInfo]) {
+        let totalSum = transactions.filter( { $0.isPinned == false })
             .reduce(0) { $0 + $1.transaction.amount }
 
         var prevOffset = 0.0
         var prevRatio = 0.0
-        chartViewItems = TransactionModel.Category.allCases.map { category -> ChartViewItem in
-            let sum = self.repository.transactions.filter({ $0.transaction.category == category && $0.isPinned == false })
+        chartViewItems.removeAll()
+        TransactionModel.Category.allCases.forEach { category in
+            let sum = transactions.filter({ $0.transaction.category == category && $0.isPinned == false })
                 .reduce(0) { $0 + $1.transaction.amount }
-            let ratio  = sum/totalSum
-            let offset = prevOffset + prevRatio
+            let ratio = sum/totalSum
+            guard ratio != 0 else { return }
 
+            let offset = prevOffset + prevRatio
             prevOffset = offset
             prevRatio = ratio
 
-            return ChartViewItem(ratio: ratio,
+            let item = ChartViewItem(ratio: ratio,
                                  offset: offset,
                                  text: "\((ratio * 100).formatted(hasDecimals: false))%",
                                  color: category.color)
+
+            chartViewItems.append(item)
         }
     }
 }
