@@ -3,9 +3,9 @@
 ## Change Details:
 - Refactored to support MVVM with Repository design pattern.
 - Added unit tests for ViewModels.
-- Added CategoryGridView to allow filtering transaction basing upon the selected category
+- Added CategoryGridView to allow filtering transaction basing upon the selected category.
 - Added TotalSumView to show floating sum view.
-- Added support for pin/unpin transactions.
+- Added support to pin/unpin transactions.
 - Updated InsightView to reflect the transactions information basing upon the pinned/unpinned transactions. 
 
 
