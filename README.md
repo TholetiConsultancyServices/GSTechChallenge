@@ -1,7 +1,7 @@
 # iOS Tech Challenge - Take Home Challenge
 
 ## Change Details:
-- Refactored to support MVVM with Repository design pattern.
+- Refactored to support MVVM-Repository design pattern.
 - Added unit tests for ViewModels.
 - Added CategoryGridView to allow filtering transaction basing upon the selected category.
 - Added TotalSumView to show floating sum view.
