@@ -11,10 +11,9 @@ import SwiftUI
 final class TransactionsViewModel: ObservableObject {
 
     @Published private(set) var transactionViewItems: [TransactionViewItem] = []
-    private(set) var selectedCategory: TransactionViewCategory = .all
 
     lazy var categoryViewItems: [TransactionViewCategory] = {
-      TransactionViewCategory.allCases
+        TransactionViewCategory.allCases
     }()
 
     var totalSumViewItem: TotalSumViewItem {
@@ -24,6 +23,7 @@ final class TransactionsViewModel: ObservableObject {
     }
 
     private var sum: Double = 0.0
+    private var selectedCategory: TransactionViewCategory = .all
     private var subscriptions = Set<AnyCancellable>()
     private let repository: TransactionsRepositoryType
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InsightsView: View {
-    @StateObject var viewModel: InsightsViewModel
+    @ObservedObject var viewModel: InsightsViewModel
 
     var body: some View {
         List {

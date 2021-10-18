@@ -20,13 +20,10 @@ struct TotalSumView: View {
                     Text(viewItem.category)
                         .foregroundColor(viewItem.categoryColor)
                         .font(.headline)
-                        .fontWeight(.bold)
                 }
 
-                Spacer()
-
                 HStack {
-                    Text("Total spent")
+                    Text("Total spent:")
                         .secondary()
 
                     Spacer()
@@ -36,12 +33,13 @@ struct TotalSumView: View {
                         .secondary()
                 }
             }
-            .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         }
         .frame(height: 70)
-        .border(Color.accentColor, width: 2)
-        .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
-        .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+        .overlay(
+            RoundedRectangle(cornerRadius: 8.0).stroke(Color.accentColor, lineWidth: 2)
+        )
+        .padding(EdgeInsets(top: 0, leading: 8, bottom: 8, trailing: 8))
     }
 }
 

@@ -58,6 +58,26 @@ class TransactionsViewModelTests: XCTestCase {
         }
     }
 
+    func test_TransactionViewItems_GivenMixedCategoryTransactionInfoList_WhenTravelCategoryIsSelected_ReturnsTravelCategoryTransactionsOnly() {
+        // Given
+        let transactions = [TransactionInfo.mockData(category: .travel),
+                            TransactionInfo.mockData(category: .travel),
+                            TransactionInfo.mockData(category: .travel),
+                            TransactionInfo.mockData(category: .shopping)]
+
+        mockTransactionsRepository.transactionsReturnValue = transactions
+
+        //  When
+        sut.setSelectedCategory(.travel)
+        let transactionViewItems = sut.transactionViewItems
+
+        // Then
+        XCTAssertTrue(transactionViewItems.count == 3)
+        transactionViewItems.forEach { item in
+            XCTAssertTrue(item.categoryName == TransactionViewCategory.travel.text)
+        }
+    }
+
     func test_SetSelectedCategory_GivenMixedCategoryTransactionInfoList_WhenFoodCategoryIsSelected_ReturnsTotalSummaryViewWithFoodTransactionsOnly() {
         // Given
         let transactions = [TransactionInfo.mockData(category: .food, amount: 10.00),
@@ -125,6 +145,3 @@ class TransactionsViewModelTests: XCTestCase {
         XCTAssertTrue(receivedArgument?.transactionID == 123)
     }
 }
-
-
-

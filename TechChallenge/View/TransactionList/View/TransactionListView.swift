@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TransactionListView: View {
-    @StateObject var viewModel: TransactionsViewModel
+    @ObservedObject var viewModel: TransactionsViewModel
 
     var body: some View {
 

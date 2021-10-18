@@ -10,8 +10,8 @@ import SwiftUI
 
 final class InsightsViewModel: ObservableObject {
 
-    @Published var categorySumViewItems: [CategorySumViewItem] = []
-    @Published var chartViewItems: [ChartViewItem] = []
+    @Published private(set) var categorySumViewItems: [CategorySumViewItem] = []
+    @Published private(set) var chartViewItems: [ChartViewItem] = []
 
     private let repository: TransactionsRepositoryType
     private var subscriptions = Set<AnyCancellable>()
