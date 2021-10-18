@@ -1,6 +1,14 @@
 # iOS Tech Challenge - Take Home Challenge
 
-Thank you for your interest in taking the iOS Tech Challenge.
+## Change Details:
+- Refactored to support MVVM with Repository design pattern.
+- Added unit tests for ViewModels.
+- Added CategoryGridView to allow filtering transaction basing upon the selected category
+- Added TotalSumView to show floating sum view.
+- Added support for pin/unpin transactions.
+- Updated InsightView to reflect the transactions information basing upon the pinned/unpinned transactions. 
+
+
 
 ## Preparation 
 Please, compile the project in Xcode and run it in your simulator of choice. You will find a working app prototype with 2 screens, accessible via the tab bar. This is the starting point for the challenge.
